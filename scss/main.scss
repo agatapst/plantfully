@@ -1,0 +1,44 @@
+@import "node_modules/normalize.css/normalize";
+@import "node_modules/bootstrap/scss/bootstrap";
+
+@import "variables";
+
+body {
+  font: {
+    family: $main-font;
+  }
+}
+
+.header {
+  background: {
+    image: $header-bg;
+    size: 100%;
+    repeat: no-repeat;
+  }
+  height: 300px;
+}
+
+.navbar-brand {
+  font: {
+    family: $decorative-font;
+    size: 1.5rem;
+  }
+}
+
+.header h1 {
+    font: {
+      family: $decorative-font;
+      size: 6.5rem;
+    }
+    letter-spacing: 3px;
+  }
+
+.about img{
+  width: 100%;
+}
+
+// .search {
+//   background: {
+//     color: $main-bg;
+//   }
+// }
