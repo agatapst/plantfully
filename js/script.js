@@ -4,7 +4,7 @@ const objArray = [
     {
         id: 0,
         name: "croton",
-        level: "low",
+        difficulty: "low",
         watering: "moderate",
         humidity: "moderate",
         light: "bright (no direct sun)"
@@ -13,7 +13,7 @@ const objArray = [
     {
         id: 1,
         name: "lemon lime dracaena",
-        level: "low",
+        difficulty: "low",
         watering: "moderate",
         humidity: "ample",
         light: "bright/medium"
@@ -22,7 +22,7 @@ const objArray = [
     {
         id: 3,
         name: "moth orchid",
-        level: "medium",
+        difficulty: "medium",
         watering: "moderate",
         humidity: "ample",
         light: "bright/medium"
@@ -126,16 +126,15 @@ const objArray = [
         humidity: "low",
         light: "medium/low"
     },
-
 ]
 
 $("#search-button").click(function() {
     var searchValue = searchElement.val();
     console.log("searchValue", searchValue)
-    var obj = findObjectByKey(objArray, "name", searchValue)
-    console.log(obj)
+    var plant = findObjectByKey(objArray, "name", searchValue);
+    showDescription(plant);
+    console.log(plant)
 });
-
 
   function findObjectByKey(array, key, value) {
     for (var i = 0; i < array.length; i++) {
@@ -146,6 +145,18 @@ $("#search-button").click(function() {
     return null;
 }
   
+function showDescription(plant){
+    var name = plant.name;
+    var difficulty = plant.difficulty;
+    var watering = plant.watering;
+    var humidity = plant.humidity;
+    var light = plant.light;
+    console.log(watering);
+    $( ".description" ).append("name: " + name + "<br>" + "difficulty level: " 
+    + difficulty + "<br>" + "watering: " + watering + "<br>" + "humidity: " +
+     humidity + "<br>" + "light: " + light);
+}
+
 // var obj = objArray.find(function(plant) { return plant.name === searchValue })
 // var obj = objArray.filter(function(plant) { return plant.name === searchValue })
 // var obj = $.grep(objArray, function(plant) { return plant.name === searchValue })
