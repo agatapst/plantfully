@@ -6,6 +6,6 @@ Install dependencies
 
     $ npm install
 
-Compile SASS
+Compile SASS & JS
 
-    $ npm run scss
+    $ gulp watch
