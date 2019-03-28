@@ -36,6 +36,31 @@ body {
   width: 100%;
 }
 
+.searchbar {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.description {
+  text-align: center;
+}
+
+.col h2 {
+  font: {
+    family: $decorative-font;
+    size: 3rem;
+  }
+}
+
+.col {
+  margin-bottom: 30px;
+}
+
+.popular-plants-images img {
+ width: 200px;
+ margin: 20px;
+
+}
 // .search {
 //   background: {
 //     color: $main-bg;
