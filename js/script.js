@@ -1,4 +1,12 @@
 const searchElement = $("#search-input");
+var counter = 0;
+var currentPlantDescription;
+
+var favorites = [];
+if (localStorage.getItem("items") !== null) {
+    favorites = JSON.parse(localStorage.getItem("items"));
+    $(".added-favs").append(favorites);
+}
 
 // plant list
 const objArray = [
@@ -131,6 +139,7 @@ const objArray = [
 
 // show description of the searched plant
 $("#search-button").click(function() {
+    $(".description").empty();
     var searchValue = searchElement.val();
     console.log("searchValue", searchValue)
     var plant = findObjectByKey(objArray, "name", searchValue);
@@ -154,18 +163,23 @@ function showDescription(plant){
     var watering = plant.watering;
     var humidity = plant.humidity;
     var light = plant.light;
-    $( ".description" ).append("<li><span>name: </span>" + name  + "</li><li><span>difficulty level: </span>" 
+    var plantDescription = "<li><span>name: </span>" + name  + "</li><li><span>difficulty level: </span>" 
     + difficulty + "</li><li><span>watering: </span>" + watering + "</li><li><span>humidity: </span>" +
-     humidity + "</li><li><span>light: </span>" + light);
-    $(".add-fav").append(" add to favourites");
+     humidity + "</li><li><span>light: </span>" + light;
+    $(".description").append(plantDescription);
+    currentPlantDescription = plantDescription;
 }
 
-$(document).ready(function() {
-    var favorites = [];
-
-    $('#fav-icon').click(function() {
-        $(".no-favs").addClass("d-none");
-        favorites.push("\"" + $(this).text() + " ");
-        $(".added-favs").append(($(".description")));
-    });
+$('#fav-icon').on("click", function(e) {
+    // add to fav section
+    // $(".no-favs").addClass("d-none");
+    e.preventDefault();
+    if (favorites.indexOf(currentPlantDescription) === -1) {
+        favorites.push(currentPlantDescription);
+        $(".added-favs").append(currentPlantDescription);
+        // add to local storage
+        localStorage.setItem('items', JSON.stringify(favorites));
+    }
 });
+
+
