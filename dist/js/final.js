@@ -162,9 +162,10 @@ function showDescription(plant){
     var humidity = plant.humidity;
     var light = plant.light;
     console.log(watering);
-    $( ".description" ).append("name: " + name + "<br>" + "difficulty level: " 
-    + difficulty + "<br>" + "watering: " + watering + "<br>" + "humidity: " +
-     humidity + "<br>" + "light: " + light);
+    $( ".description" ).append("<li><span>name: </span>" + name  + "</li><li><span>difficulty level: </span>" 
+    + difficulty + "</li><li><span>watering: </span>" + watering + "</li><li><span>humidity: </span>" +
+     humidity + "</li><li><span>light: </span>" + light);
+    $(".add-fav").append("<button>add to favourites</button>")
 }
 
 // var obj = objArray.find(function(plant) { return plant.name === searchValue })

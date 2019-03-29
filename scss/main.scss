@@ -50,16 +50,25 @@ body {
     family: $decorative-font;
     size: 3rem;
   }
-}
-
-.col {
-  margin-bottom: 30px;
+  border-top: 1px solid $primary;
+  padding-top: 20px;
 }
 
 .popular-plants-images img {
  width: 200px;
  margin: 20px;
 
+}
+
+.description span {
+  font: {
+    family: $decorative-font;
+    size: 2rem;
+  }
+}
+
+ul {
+  list-style-type: none;
 }
 // .search {
 //   background: {
