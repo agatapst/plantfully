@@ -1,5 +1,6 @@
 const searchElement = $("#search-input");
 
+// plant list
 const objArray = [
     {
         id: 0,
@@ -128,6 +129,7 @@ const objArray = [
     },
 ]
 
+// show description of the searched plant
 $("#search-button").click(function() {
     var searchValue = searchElement.val();
     console.log("searchValue", searchValue)
@@ -144,22 +146,26 @@ $("#search-button").click(function() {
     }
     return null;
 }
-  
+ 
+// show description of some plant
 function showDescription(plant){
     var name = plant.name;
     var difficulty = plant.difficulty;
     var watering = plant.watering;
     var humidity = plant.humidity;
     var light = plant.light;
-    console.log(watering);
     $( ".description" ).append("<li><span>name: </span>" + name  + "</li><li><span>difficulty level: </span>" 
     + difficulty + "</li><li><span>watering: </span>" + watering + "</li><li><span>humidity: </span>" +
      humidity + "</li><li><span>light: </span>" + light);
-    $(".add-fav").append("<button>add to favourites</button>")
+    $(".add-fav").append(" add to favourites");
 }
 
-// var obj = objArray.find(function(plant) { return plant.name === searchValue })
-// var obj = objArray.filter(function(plant) { return plant.name === searchValue })
-// var obj = $.grep(objArray, function(plant) { return plant.name === searchValue })
+$(document).ready(function() {
+    var favorites = [];
 
-
+    $('#fav-icon').click(function() {
+        $(".no-favs").addClass("d-none");
+        favorites.push("\"" + $(this).text() + " ");
+        $(".added-favs").append(($(".description")));
+    });
+});
