@@ -9,7 +9,7 @@ if (localStorage.getItem("items") !== null) {
 }
 
 // plant list
-const objArray = [
+var plants = [
     {
         id: 0,
         name: "croton",
@@ -137,12 +137,16 @@ const objArray = [
     },
 ]
 
+var plantName = plants.map(function(plant) {
+    return plant.name;
+});
+
 // show description of the searched plant
 $("#search-button").click(function() {
     $(".description").empty();
     var searchValue = searchElement.val();
     console.log("searchValue", searchValue)
-    var plant = findObjectByKey(objArray, "name", searchValue);
+    var plant = findObjectByKey(plants, "name", searchValue);
     showDescription(plant);
     console.log(plant)
 });
@@ -172,7 +176,7 @@ function showDescription(plant){
 
 $('#fav-icon').on("click", function(e) {
     // add to fav section
-    // $(".no-favs").addClass("d-none");
+    $(".no-favs").addClass("d-none");
     e.preventDefault();
     if (favorites.indexOf(currentPlantDescription) === -1) {
         favorites.push(currentPlantDescription);
@@ -181,5 +185,11 @@ $('#fav-icon').on("click", function(e) {
         localStorage.setItem('items', JSON.stringify(favorites));
     }
 });
+
+$(function() {
+    $("#search-input").autocomplete({
+       source: plantName
+    });
+ });
 
 

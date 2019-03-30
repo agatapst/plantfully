@@ -19,7 +19,8 @@ function compileJs() {
         gulp
             .src([
                 "node_modules/jquery/dist/jquery.min.js", 
-                "node_modules/bootstrap/dist/js/bootstrap.min.js", 
+                "node_modules/bootstrap/dist/js/bootstrap.min.js",
+                "node_modules/jquery-ui-dist/jquery-ui.min.js",
                 "js/script.js"
             ])
             .pipe(concat('final.js'))
