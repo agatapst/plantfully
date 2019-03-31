@@ -1,13 +1,7 @@
 const searchElement = $("#search-input");
-var counter = 0;
-var currentPlantDescription;
-
-var favorites = [];
-if (localStorage.getItem("items") !== null) {
-    $(".no-favs").addClass("d-none");
-    favorites = JSON.parse(localStorage.getItem("items"));
-    $(".added-favs").append(favorites);
-}
+let counter = 0;
+let currentPlantDescription;
+let currentPlantName;
 
 // plant list
 const plants = [
@@ -138,34 +132,27 @@ const plants = [
     },
 ]
 
-let plantName = plants.map(function(plant) {
+let favorites = [];
+if (localStorage.getItem("items") !== null) {
+    $(".no-favs").addClass("d-none");
+    favorites = JSON.parse(localStorage.getItem("items"));
+    favorites.forEach(function(plantName) {
+        let plant = findObjectByKey(plants, "name", plantName);
+        let plantDescription = createDescription(plant);
+        $(".added-favs").append(plantDescription);
+    });
+}
+
+let plantsNames = plants.map(function(plant) {
     return plant.name;
 });
 
-// show description of the searched plant
-$("#search-button").click(function() {
-    $(".description").empty();
-    var searchValue = searchElement.val();
-    console.log("searchValue", searchValue)
-    var plant = findObjectByKey(plants, "name", searchValue);
-    showDescription(plant);
-    console.log(plant)
-});
-
-  function findObjectByKey(array, key, value) {
-    for (var i = 0; i < array.length; i++) {
-        if (array[i][key] === value) {
-            return array[i];
-        }
-    }
-    return null;
-}
- 
 // show description of some plant
 function showDescription(plant){
     let plantDescription = createDescription(plant);
     $(".description").append(plantDescription);
     currentPlantDescription = plantDescription;
+    currentPlantName = plant.name;
 }
 
 function createDescription(plant) {
@@ -174,12 +161,32 @@ function createDescription(plant) {
     plant.humidity + "</li><li><span>light: </span>" + plant.light;
 }
 
+
+// show description of the searched plant
+$("#search-button").click(function() {
+    $(".description").empty();
+    let searchValue = searchElement.val();
+    console.log("searchValue", searchValue)
+    let plant = findObjectByKey(plants, "name", searchValue);
+    showDescription(plant);
+    console.log(plant)
+});
+
+  function findObjectByKey(array, key, value) {
+    for (let i = 0; i < array.length; i++) {
+        if (array[i][key] === value) {
+            return array[i];
+        }
+    }
+    return null;
+}
+ 
 $('#fav-icon').on("click", function(e) {
     // add to fav section
     $(".no-favs").addClass("d-none");
     e.preventDefault();
-    if (favorites.indexOf(currentPlantDescription) === -1) {
-        favorites.push(currentPlantDescription);
+    if (favorites.indexOf(currentPlantName) === -1) {
+        favorites.push(currentPlantName);
         $(".added-favs").append(currentPlantDescription);
         // add to local storage
         localStorage.setItem('items', JSON.stringify(favorites));
@@ -188,7 +195,7 @@ $('#fav-icon').on("click", function(e) {
 
 $(function() {
     $("#search-input").autocomplete({
-       source: plantName
+       source: plantsNames
     });
  });
 
