@@ -27,12 +27,13 @@ var currentPlantDescription;
 
 var favorites = [];
 if (localStorage.getItem("items") !== null) {
+    $(".no-favs").addClass("d-none");
     favorites = JSON.parse(localStorage.getItem("items"));
     $(".added-favs").append(favorites);
 }
 
 // plant list
-var plants = [
+const plants = [
     {
         id: 0,
         name: "croton",
@@ -160,7 +161,7 @@ var plants = [
     },
 ]
 
-var plantName = plants.map(function(plant) {
+let plantName = plants.map(function(plant) {
     return plant.name;
 });
 
@@ -185,16 +186,15 @@ $("#search-button").click(function() {
  
 // show description of some plant
 function showDescription(plant){
-    var name = plant.name;
-    var difficulty = plant.difficulty;
-    var watering = plant.watering;
-    var humidity = plant.humidity;
-    var light = plant.light;
-    var plantDescription = "<li><span>name: </span>" + name  + "</li><li><span>difficulty level: </span>" 
-    + difficulty + "</li><li><span>watering: </span>" + watering + "</li><li><span>humidity: </span>" +
-     humidity + "</li><li><span>light: </span>" + light;
+    let plantDescription = createDescription(plant);
     $(".description").append(plantDescription);
     currentPlantDescription = plantDescription;
+}
+
+function createDescription(plant) {
+    return "<li><span>name: </span>" + plant.name  + "</li><li><span>difficulty level: </span>" 
+    + plant.difficulty + "</li><li><span>watering: </span>" + plant.watering + "</li><li><span>humidity: </span>" +
+    plant.humidity + "</li><li><span>light: </span>" + plant.light;
 }
 
 $('#fav-icon').on("click", function(e) {
