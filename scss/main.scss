@@ -61,7 +61,7 @@ body {
 
 }
 
-.description span {
+.description span, .fav-plants span {
   font: {
     family: $decorative-font;
     size: 2rem;
@@ -71,8 +71,15 @@ body {
 ul {
   list-style-type: none;
 }
-// .search {
-//   background: {
-//     color: $main-bg;
-//   }
-// }
+
+.added-favs {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.fav-plants-header {
+  display: flex;
+  justify-content: space-between;
+
+}

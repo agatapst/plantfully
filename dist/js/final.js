@@ -158,6 +158,7 @@ const plants = [
 let favorites = [];
 if (localStorage.getItem("items") !== null) {
     $(".no-favs").addClass("d-none");
+    $("#delete-icon").removeClass("d-none");
     favorites = JSON.parse(localStorage.getItem("items"));
     favorites.forEach(function(plantName) {
         let plant = findObjectByKey(plants, "name", plantName);
@@ -179,9 +180,9 @@ function showDescription(plant){
 }
 
 function createDescription(plant) {
-    return "<li><span>name: </span>" + plant.name  + "</li><li><span>difficulty level: </span>" 
+    return "<ul><li><span>name: </span>" + plant.name  + "</li><li><span>difficulty level: </span>" 
     + plant.difficulty + "</li><li><span>watering: </span>" + plant.watering + "</li><li><span>humidity: </span>" +
-    plant.humidity + "</li><li><span>light: </span>" + plant.light;
+    plant.humidity + "</li><li><span>light: </span>" + plant.light + "</ul>";
 }
 
 
@@ -204,9 +205,11 @@ $("#search-button").click(function() {
     return null;
 }
  
+// add to favourites
 $('#fav-icon').on("click", function(e) {
     // add to fav section
     $(".no-favs").addClass("d-none");
+    $("#delete-icon").removeClass("d-none");
     e.preventDefault();
     if (favorites.indexOf(currentPlantName) === -1) {
         favorites.push(currentPlantName);
@@ -216,10 +219,16 @@ $('#fav-icon').on("click", function(e) {
     }
 });
 
+// autocomplete
 $(function() {
     $("#search-input").autocomplete({
        source: plantsNames
     });
  });
 
+//  delete all favorites
+$('#delete-icon').on("click", function() {
+    localStorage.clear();
+    $(".added-favs").addClass("d-none");
+});
 
