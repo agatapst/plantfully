@@ -46,26 +46,28 @@ body {
   text-align: center;
 }
 
-.searchbar h2 {
-  size: 6.5rem;
+.searchbar-header {
+  font-size: 3rem;
 }
 
 .searched-plant-description {
   text-align: center;
 }
 
-.col h2 {
+.section-header {
   font: {
     family: $decorative-font;
     size: 3rem;
   }
 }
 
-.col {
+.general-section {
   border-bottom: 1px solid $primary;
   padding-top: 20px;
 }
-
+.fav-plants {
+  border-top: 1px solid $primary;
+}
 .popular-plants-images img {
  width: 200px;
  margin: 20px;
@@ -81,7 +83,14 @@ body {
 
 ul {
   list-style-type: none;
+}
+
+.description ul {
   padding-inline-start: 0 !important;
+}
+
+.added-favs ul {
+  padding-inline-start: 20px !important;
 }
 
 .added-favs {
