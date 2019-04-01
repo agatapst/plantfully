@@ -16,6 +16,14 @@ body {
     repeat: no-repeat;
   }
   height: 300px;
+
+  h1 {
+    font: {
+      family: $decorative-font;
+      size: 6.5rem;
+    }
+    letter-spacing: 3px;
+  }
 }
 
 .navbar-brand {
@@ -25,20 +33,8 @@ body {
   }
 }
 
-.navbar-toggler, .navbar-nav {
+.navbar-toggler {
   background: #ffffff;
-}
-
-.header h1 {
-    font: {
-      family: $decorative-font;
-      size: 6.5rem;
-    }
-    letter-spacing: 3px;
-  }
-
-.about img{
-  width: 100%;
 }
 
 .searchbar {
@@ -46,7 +42,7 @@ body {
   text-align: center;
 }
 
-.searchbar-header {
+#searchbar-header {
   font-size: 3rem;
 }
 
@@ -65,19 +61,24 @@ body {
   border-bottom: 1px solid $primary;
   padding-top: 20px;
 }
+
+.popular-plants-images {
+  img {
+    width: 200px;
+    margin: 20px;
+  }
+}
+
 .fav-plants {
   border-top: 1px solid $primary;
 }
-.popular-plants-images img {
- width: 200px;
- margin: 20px;
 
-}
-
-.description span, .fav-plants span {
-  font: {
-    family: $decorative-font;
-    size: 2rem;
+.description, .fav-plants {
+  span {
+    font: {
+      family: $decorative-font;
+      size: 2rem;
+    }
   }
 }
 
@@ -85,18 +86,21 @@ ul {
   list-style-type: none;
 }
 
-.description ul {
-  padding-inline-start: 0 !important;
-}
-
-.added-favs ul {
-  padding-inline-start: 20px !important;
+.description {
+  ul {
+    padding-inline-start: 0 !important;
+  }
 }
 
 .added-favs {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-between;
+
+  ul {
+    padding-inline-start: 20px !important;
+  }
 }
 
 .fav-plants-header {
@@ -105,13 +109,31 @@ ul {
 }
 
 #fav-icon {
-  color: 	#B22222;
+  color: $icon-red;
   margin-bottom: 10px;
   display: center;
 }
 
-// @media only screen and (max-width: 479px) {
-//   .features p, .features h2  { 
-//       width: 100%; 
-//   } 
-// }
+#delete-icon {
+  padding: 0;
+  color: $icon-red;
+  height: 30px;
+  border: none;
+  outline: none;
+}
+
+.about {
+  img { width: 100%; }
+}
+
+@media only screen and (max-width: 767px) {
+  .navbar-nav  { 
+      background-color: #ffffff;
+  } 
+  .searchbar {
+    margin-top: auto;
+  }
+  .header {
+    height: 150px;
+  }
+}

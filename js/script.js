@@ -1,4 +1,3 @@
-const searchElement = $("#search-input");
 let counter = 0;
 let currentPlantDescription;
 let currentPlantName;
@@ -132,8 +131,26 @@ const plants = [
     },
 ]
 
+// finds object in array by specific key
+function findObjectByKey(array, key, value) {
+    for (let i = 0; i < array.length; i++) {
+        if (array[i][key] === value) {
+            return array[i];
+        }
+    }
+    return null;
+}
+
+// returns HTML description for some plant
+function createDescription(plant) {
+    return "<ul><li><span>name: </span>" + plant.name  + "</li><li><span>difficulty level: </span>" 
+    + plant.difficulty + "</li><li><span>watering: </span>" + plant.watering + "</li><li><span>humidity: </span>" +
+    plant.humidity + "</li><li><span>light: </span>" + plant.light + "</ul>";
+}
+
+// load favourites from localStorage
 let favorites = [];
-if (localStorage.getItem("items") !== null) {
+if (localStorage.getItem("items")) {
     $(".no-favs").addClass("d-none");
     $("#delete-icon").removeClass("d-none");
     favorites = JSON.parse(localStorage.getItem("items"));
@@ -144,12 +161,8 @@ if (localStorage.getItem("items") !== null) {
     });
 }
 
-let plantsNames = plants.map(function(plant) {
-    return plant.name;
-});
-
 // show description of some plant
-function showDescription(plant){
+function showDescription(plant) {
     $(".alert-success").addClass("d-none");
     let plantDescription = createDescription(plant);
     $(".description").append(plantDescription);
@@ -157,59 +170,49 @@ function showDescription(plant){
     currentPlantName = plant.name;
 }
 
-function createDescription(plant) {
-    return "<ul><li><span>name: </span>" + plant.name  + "</li><li><span>difficulty level: </span>" 
-    + plant.difficulty + "</li><li><span>watering: </span>" + plant.watering + "</li><li><span>humidity: </span>" +
-    plant.humidity + "</li><li><span>light: </span>" + plant.light + "</ul>";
-}
-
-
-// show description of the searched plant
-$("#search-button").click(function() {
-    $("#fav-icon").removeClass("d-none");
-    $(".description").empty();
-    let searchValue = searchElement.val();
-    console.log("searchValue", searchValue)
-    let plant = findObjectByKey(plants, "name", searchValue);
-    showDescription(plant);
-    console.log(plant)
-});
-
-  function findObjectByKey(array, key, value) {
-    for (let i = 0; i < array.length; i++) {
-        if (array[i][key] === value) {
-            return array[i];
-        }
-    }
-    return null;
-}
- 
-// add to favourites
-$('#fav-icon').on("click", function(e) {
-    // add to fav section
-    $(".no-favs").addClass("d-none");
-    $("#delete-icon").removeClass("d-none");
-    $(".alert-success").removeClass("d-none");
-    e.preventDefault();
-    if (favorites.indexOf(currentPlantName) === -1) {
-        favorites.push(currentPlantName);
-        $(".added-favs").append(currentPlantDescription);
-        // add to local storage
-        localStorage.setItem('items', JSON.stringify(favorites));
-    }
-});
-
-// autocomplete
 $(function() {
+    const searchElement = $("#search-input");
+
+    // autocomplete
+    let plantsNames = plants.map(function(plant) {
+        return plant.name;
+    });
     $("#search-input").autocomplete({
-       source: plantsNames
+        source: plantsNames
+     });
+
+    // show description of the searched plant
+    $("#search-button").click(function(e) {
+        e.preventDefault();
+        $("#fav-icon").removeClass("d-none");
+        $(".description").empty();
+        let searchValue = searchElement.val();
+        console.log("searchValue", searchValue)
+        let plant = findObjectByKey(plants, "name", searchValue);
+        showDescription(plant);
+        console.log(plant)
+    });
+
+    // add to favourites
+    $('#fav-icon').on("click", function(e) {
+        e.preventDefault();
+        // add to fav section
+        $(".no-favs").addClass("d-none");
+        $("#delete-icon").removeClass("d-none");
+        $(".alert-success").removeClass("d-none");
+        if (favorites.indexOf(currentPlantName) === -1) {
+            favorites.push(currentPlantName);
+            $(".added-favs").append(currentPlantDescription);
+            // add to local storage
+            localStorage.setItem('items', JSON.stringify(favorites));
+        }
+    });
+
+    //  delete all favorites
+    $('#delete-icon').on("click", function() {
+        localStorage.clear();
+        $(".added-favs").addClass("d-none");
+        $(".alert-danger").removeClass("d-none");
     });
  });
-
-//  delete all favorites
-$('#delete-icon').on("click", function() {
-    localStorage.clear();
-    $(".added-favs").addClass("d-none");
-    $(".alert-danger").removeClass("d-none");
-});
 
