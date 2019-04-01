@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="dist/css/main.css">
 </head>
 <body>
+    
+    <!-- header -->
     <div class="container-fluid header">
         <div class="row">
             <div class="col-lg-8 offset-2">
@@ -18,81 +20,83 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">search plant</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            plants
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">popular</a>
-                            <a class="dropdown-item" href="#">friendly</a>
-                            <div class="dropdown-divider"></div>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">about</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">search plant</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    plants
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">popular</a>
+                                    <a class="dropdown-item" href="#">friendly</a>
+                                    <div class="dropdown-divider"></div>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">about</a>
+                            </li>
                         </ul>
                     </div>
                 </nav>
             </div>
-            
-            <div class="col-lg-8 offset-2">
-            <h1>plantfully.</h1>
+            <div class="col-lg-8 offset-2 d-none d-md-block">
+                <h1>plantfully.</h1>
             </div>
         </div>
     </div>
-
+    
     <div class="container search-section">
         <div class="row">
             <div class="col-lg-8 offset-lg-2 searchbar">
                 <h2>check out, how not to kill your plant</h2>
                 <p>what is the name of the plant?</p>
+                <div class="col-md-6 offset-md-3">
                     <form>
                         <div class="form-group ui-widget">
                             <input type="text" class="form-control input-sm" id="search-input" placeholder="">
                         </div>
                         <button type="submit" class="btn btn-primary" id="search-button">Submit</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <div class="container chosen-plant">
-            <div class="row">
-                <div class="col col-lg-8 offset-lg-2 chosen-plants">
-                    <div>
-                        <div class="description list-group list-group-flush">
-
-                        </div>
-                        <button class="far fa-heart" id="fav-icon"></button>
-                        <span class="add-fav"></span>                     
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
-
+    </div>
+    
+    <div class="container searched-plant">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="searched-plant-description">
+                    <div class="description list-group list-group-flush"></div>
+                    <button title="Add to favorites" class="icon fas fa-heart center-block d-none" id="fav-icon"></button>                 
+                </div>
+                <div class="alert alert-success d-none" role="alert">
+                    You have succesfully added plant to your favorites section.
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <div class="container favourites">
         <div class="row">
             <div class="col col-lg-8 offset-lg-2 fav-plants">
                 <div class="fav-plants-header">
                     <h2>your favourite plants</h2>
-                    <button class="d-none far fa-trash-alt" id="delete-icon"></button>
-               </div>
-                
+                    <button class="icon far fa-trash-alt d-none" id="delete-icon"></button>
+                </div>
+                <div class="alert alert-danger d-none" role="alert">
+                    You have succesfully deleted your favorites section.
+                </div>
                 <div class="added-favs">
                     <p class="no-favs">So far, you have not added any plant.</p>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- <div class="container plants">
+    
+    <div class="container plants">
         <div class="row">
             <div class="col col-lg-8 offset-lg-2 popular-plants">
                 <h2>popular plants</h2>
@@ -102,14 +106,14 @@
                     <img src="images/cactus-img.jpg">
                     <img src="images/cactus-img.jpg">
                 </div>
-
+                
             </div>
         </div>
         <div class="row">
             <div class="col col-lg-8 offset-lg-2 friendly-plants">
                 <h2>friendly plants</h2>
                 <p>plants which will still smile at you even if you forget to water them </p>
-                 <div class="popular-plants-images">
+                <div class="popular-plants-images">
                     <img src="images/cactus-img.jpg">
                     <img src="images/cactus-img.jpg">
                     <img src="images/cactus-img.jpg">
@@ -117,7 +121,7 @@
             </div>
         </div>
     </div>
-
+    
     <div class="container about">
         <div class="row">
             <div class="col col-lg-3 offset-lg-3">
@@ -136,9 +140,9 @@
                     amaranth salsify bunya nuts nori azuki bean 
                 </p>
             </div>
-        </div>  -->
+        </div> 
     </div>
-
-<script src="dist/js/final.js"></script>
+    
+    <script src="dist/js/final.js"></script>
 </body>
 </html>

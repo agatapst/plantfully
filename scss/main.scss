@@ -25,6 +25,10 @@ body {
   }
 }
 
+.navbar-toggler, .navbar-nav {
+  background: #ffffff;
+}
+
 .header h1 {
     font: {
       family: $decorative-font;
@@ -38,11 +42,15 @@ body {
 }
 
 .searchbar {
-  margin-top: 30px;
+  margin-top: 20px;
   text-align: center;
 }
 
-.description {
+.searchbar h2 {
+  size: 6.5rem;
+}
+
+.searched-plant-description {
   text-align: center;
 }
 
@@ -51,7 +59,10 @@ body {
     family: $decorative-font;
     size: 3rem;
   }
-  border-top: 1px solid $primary;
+}
+
+.col {
+  border-bottom: 1px solid $primary;
   padding-top: 20px;
 }
 
@@ -70,6 +81,7 @@ body {
 
 ul {
   list-style-type: none;
+  padding-inline-start: 0 !important;
 }
 
 .added-favs {
@@ -81,5 +93,16 @@ ul {
 .fav-plants-header {
   display: flex;
   justify-content: space-between;
-
 }
+
+#fav-icon {
+  color: 	#B22222;
+  margin-bottom: 10px;
+  display: center;
+}
+
+// @media only screen and (max-width: 479px) {
+//   .features p, .features h2  { 
+//       width: 100%; 
+//   } 
+// }

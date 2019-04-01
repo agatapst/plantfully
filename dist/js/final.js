@@ -77,7 +77,7 @@ const plants = [
         id: 6,
         name: "bamboo",
         difficulty: "very low",
-        watering: "vase filled with water",
+        watering: "medium",
         humidity: "moderate",
         light: "bright/medium/low"
     },
@@ -173,6 +173,7 @@ let plantsNames = plants.map(function(plant) {
 
 // show description of some plant
 function showDescription(plant){
+    $(".alert-success").addClass("d-none");
     let plantDescription = createDescription(plant);
     $(".description").append(plantDescription);
     currentPlantDescription = plantDescription;
@@ -188,6 +189,7 @@ function createDescription(plant) {
 
 // show description of the searched plant
 $("#search-button").click(function() {
+    $("#fav-icon").removeClass("d-none");
     $(".description").empty();
     let searchValue = searchElement.val();
     console.log("searchValue", searchValue)
@@ -210,6 +212,7 @@ $('#fav-icon').on("click", function(e) {
     // add to fav section
     $(".no-favs").addClass("d-none");
     $("#delete-icon").removeClass("d-none");
+    $(".alert-success").removeClass("d-none");
     e.preventDefault();
     if (favorites.indexOf(currentPlantName) === -1) {
         favorites.push(currentPlantName);
@@ -230,5 +233,6 @@ $(function() {
 $('#delete-icon').on("click", function() {
     localStorage.clear();
     $(".added-favs").addClass("d-none");
+    $(".alert-danger").removeClass("d-none");
 });
 
