@@ -13,6 +13,11 @@ body {
   }
 }
 
+ul {
+  list-style-type: none;
+}
+
+// header section
 .header {
   background: {
     image: $header-bg;
@@ -21,7 +26,7 @@ body {
   }
   height: 300px;
 
-  h1 {
+  .headline {
     font: {
       family: $decorative-font;
       size: 6.5rem;
@@ -30,6 +35,7 @@ body {
   }
 }
 
+// navbar
 .navbar-brand {
   font: {
     family: $decorative-font;
@@ -38,9 +44,10 @@ body {
 }
 
 .navbar-toggler {
-  background: #ffffff;
+  background: $navbar-white;
 }
 
+// searchbar
 .searchbar {
   margin-top: 20px;
   text-align: center;
@@ -50,31 +57,9 @@ body {
   font-size: 3rem;
 }
 
+// searched plant description
 .searched-plant-description {
   text-align: center;
-}
-
-.section-header {
-  font: {
-    family: $decorative-font;
-    size: 3rem;
-  }
-}
-
-.general-section {
-  border-bottom: 1px solid $primary;
-  padding-top: 20px;
-}
-
-.plants-images {
-  img {
-    width: 200px;
-    margin: 20px;
-  }
-}
-
-.fav-plants {
-  border-top: 1px solid $primary;
 }
 
 .description, .fav-plants {
@@ -86,16 +71,13 @@ body {
   }
 }
 
-ul {
-  list-style-type: none;
-}
-
 .description {
   ul {
     padding-inline-start: 0 !important;
   }
 }
 
+// favorites section
 .added-favs {
   display: flex;
   flex-direction: row;
@@ -126,30 +108,51 @@ ul {
   outline: none;
 }
 
+// other sections [general]
+.section-header {
+  font: {
+    family: $decorative-font;
+    size: 3rem;
+  }
+}
+
+.general-section {
+  border-bottom: 1px solid $primary;
+  padding-top: 20px;
+}
+
+.plants-images {
+  img {
+    width: 200px;
+    margin: 20px;
+  }
+}
+
+.fav-plants {
+  border-top: 1px solid $primary;
+}
+
 .about-us {
   img { width: 100%; }
   margin: 30px auto;
 }
 
-
-.thumbnail:hover {
-  position:relative;
-  top:-25px;
-  left:-35px;
-  width:500px;
-  height:auto;
-  display:block;
-  z-index:999;
-}
-
+// media queries
 @media only screen and (max-width: 767px) {
   .navbar-nav  { 
-      background-color: #ffffff;
+      background-color: $navbar-white;
   } 
   .searchbar {
-    margin-top: auto;
+    margin-top: 20px;
   }
   .header {
     height: 150px;
+  }
+
+  .plants-images {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
