@@ -3,6 +3,10 @@
 @import "node_modules/bootstrap/scss/bootstrap";
 @import "node_modules/jquery-ui-dist/jquery-ui.min";
 
+html.sr .load-hidden {
+  visibility: hidden;
+}
+
 body {
   font: {
     family: $main-font;
@@ -62,7 +66,7 @@ body {
   padding-top: 20px;
 }
 
-.popular-plants-images {
+.plants-images {
   img {
     width: 200px;
     margin: 20px;
@@ -125,6 +129,17 @@ ul {
 .about-us {
   img { width: 100%; }
   margin: 30px auto;
+}
+
+
+.thumbnail:hover {
+  position:relative;
+  top:-25px;
+  left:-35px;
+  width:500px;
+  height:auto;
+  display:block;
+  z-index:999;
 }
 
 @media only screen and (max-width: 767px) {
