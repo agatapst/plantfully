@@ -239,3 +239,8 @@ $(function() {
     });
  });
 
+//  add tooltips
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+
