@@ -1,4 +1,3 @@
-let counter = 0;
 let currentPlantDescription;
 let currentPlantName;
 
@@ -214,14 +213,12 @@ $(function() {
         $(".added-favs").addClass("d-none");
         $(".alert-danger").removeClass("d-none");
     });
- });
 
-//  add tooltips
-$(function () {
+    //  add tooltips
     $('[data-toggle="tooltip"]').tooltip()
-  })
 
-// scroll reveal
-ScrollReveal().reveal(".cactus-img", { delay: 300 });
-ScrollReveal().reveal(".friendly-cactus-img", { delay: 400 });
-ScrollReveal().reveal(".headline", { delay: 500 });
+    // scroll reveal
+    ScrollReveal().reveal(".cactus-img", { delay: 300 });
+    ScrollReveal().reveal(".friendly-cactus-img", { delay: 400 });
+    ScrollReveal().reveal(".headline", { delay: 200 });
+ });

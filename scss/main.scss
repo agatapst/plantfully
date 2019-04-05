@@ -32,6 +32,7 @@ ul {
       size: 6.5rem;
     }
     letter-spacing: 3px;
+    padding-left: 12px;
   }
 }
 
@@ -103,6 +104,7 @@ ul {
 #delete-icon {
   padding: 0;
   color: $icon-red;
+  background: none;
   height: 30px;
   border: none;
   outline: none;
@@ -140,11 +142,15 @@ ul {
 // media queries
 @media only screen and (max-width: 767px) {
   .navbar-nav  { 
-      background-color: $navbar-white;
+    background-color: $navbar-white;
+    padding-left: 10px;
+    box-shadow: 2px 2px 8px rgba(0,0,0,.2);
   } 
+
   .searchbar {
     margin-top: 20px;
   }
+
   .header {
     height: 150px;
   }
