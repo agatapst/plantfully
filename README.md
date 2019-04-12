@@ -28,7 +28,7 @@ Compile SASS & JS
 - CSS3 / SASS
 - HTML5
 - Bootstrap 4
-- JavaScript
+- JavaScript / jQuery
 - Gulp 
 - Local storage
 - [Scroll Reveal](https://scrollrevealjs.org)
